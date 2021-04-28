@@ -11,3 +11,7 @@ epic::
 4.  user can add message (can be unregistered user !! )
     to me ( will receive email about it)
 5. upload to Linode servers
+
+
+using bootstrap 4 as front 
+https://getbootstrap.com/docs/4.6/getting-started/introduction/
