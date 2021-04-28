@@ -2,7 +2,7 @@
 
 my portfolio web app
 
-apic::
+epic::
 
 1.  user can see my greetings and about page
     my contact info and all about me 
