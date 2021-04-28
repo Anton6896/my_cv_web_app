@@ -10,5 +10,4 @@ epic::
 3. user can logIn / out
 4.  user can add message (can be unregistered user !! )
     to me ( will receive email about it)
-
-
+5. upload to Linode servers
