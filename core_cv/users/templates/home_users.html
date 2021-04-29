@@ -3,12 +3,17 @@
 
 {% block content %}
 
+    {# user data section #}
     <div class="container mt-5 mb-5">
         <div class="row">
             <div class="col-sm">
-                <p><h3>Lorem ipsum</h3> dolor sit amet, consectetur adipisicing elit. Animi earum numquam reprehenderit. A animi
+
+                <h3>Lorem ipsum</h3>
+                <p>dolor sit amet, consectetur adipisicing elit. Animi earum numquam reprehenderit. A
+                    animi
                     aperiam, deleniti ea illo illum necessitatibus odio officiis omnis porro praesentium quae sed sint
-                    temporibus totam!</p>
+                    temporibus totam!
+                </p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem expedita explicabo odio pariatur
                     possimus rem repellat, similique sint. Dolorem doloribus dolorum exercitationem id ipsam mollitia
                     nemo, neque provident vel veritatis.</p>
@@ -22,14 +27,27 @@
 
             </div>
             <div class="col-sm">
-                <p><h4>Lorem ipsum </h4> dolor sit amet, consectetur adipisicing elit. Dolorem expedita explicabo odio pariatur
+
+                <h4>Lorem ipsum </h4>
+                <p>
+                    dolor sit amet, consectetur adipisicing elit. Dolorem expedita explicabo odio
+                    pariatur
                     possimus rem repellat, similique sint. Dolorem doloribus dolorum exercitationem id ipsam mollitia
-                    nemo, neque provident vel veritatis.</p>
+                    nemo, neque provident vel veritatis.
+                </p>
+
+                <h5> skills </h5>
+                <p>
+                    {{ profile }}
+                </p>
 
             </div>
         </div>
     </div>
+    {# end  user data section #}
 
+
+    {# make contact with me #}
     <div>
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
@@ -84,6 +102,6 @@
             </div>
         </div>
     </div>
-
+    {# end  make contact with me #}
 {% endblock content %}
 
