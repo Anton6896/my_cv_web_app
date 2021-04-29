@@ -6,7 +6,7 @@ class HomeUsers(View):
 
     def get(self, *args, **kwarg):
         context = {
-            "title": 'CV PAage'
+            "title": 'CV Page'
         }
 
         return render(self.request, "home_users.html", context)

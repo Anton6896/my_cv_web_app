@@ -13,5 +13,5 @@ epic::
 5. upload to Linode servers
 
 
-using bootstrap 4 as front 
-https://getbootstrap.com/docs/4.6/getting-started/introduction/
+using bootstrap 4 as front
+https://getbootstrap.com/docs/4.0/components/popovers/

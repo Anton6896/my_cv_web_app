@@ -23,6 +23,7 @@ class Profile(models.Model):
     image = models.ImageField(default='default.jpg',
                               upload_to=customer_image_file_path)
 
+    # todo create data that will be taken from user for his portfolio
 
     def save(self, *args, **kwargs):
         super(Profile, self).save(*args, **kwargs)
