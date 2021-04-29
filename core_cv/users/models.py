@@ -25,6 +25,13 @@ class Profile(models.Model):
 
     # todo create data that will be taken from user for his portfolio
 
+    intro = models.TextField(null=True)
+    experience = models.TextField(null=True)
+    education = models.TextField(null=True)
+    skills = models.TextField(null=True)
+    personal_quality = models.TextField(null=True)
+    languages = models.TextField(null=True)
+
     def save(self, *args, **kwargs):
         super(Profile, self).save(*args, **kwargs)
 
