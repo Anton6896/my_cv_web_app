@@ -33,6 +33,8 @@ class Profile(models.Model):
     skills = models.TextField(null=True, blank=True)
     personal_quality = models.TextField(null=True, blank=True)
     languages = models.TextField(null=True, blank=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
     def save(self, *args, **kwargs):
         super(Profile, self).save(*args, **kwargs)
@@ -59,6 +61,14 @@ def user_created_receiver(sender, instance, created, *args, **kwargs):
 
 post_save.connect(user_created_receiver, sender=User)
 
-class InTouch(models.Model):
-    pass
 
+class InTouch(models.Model):
+    # email is optional but bootstrap will check it
+    # its independent table
+    email = models.CharField(null=True, blank=True, max_length=50)
+    text = models.TextField(null=True, blank=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return str(self.email)

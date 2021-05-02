@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
-from .models import Profile
+from .models import Profile, InTouch
 from .forms import UserRegisterForm, UserProfileForm, ContactForm
 from django.contrib import messages
 
@@ -26,9 +26,15 @@ class HomeUsers(View):
     def post(self, request, *args, **kwarg):
         self.form = ContactForm(request.POST)
         if self.form.is_valid():
-            mail = self.form.cleaned_data.get('email')
+            email = self.form.cleaned_data.get('email')
             text = self.form.cleaned_data.get('text')
-            messages.success(request, f'tanks, will be in touch with -> {mail}')
+            _, created = InTouch.objects.get_or_create(
+                email=email,
+                text=text
+            )
+            if created:
+                messages.success(request, f'tanks {email}, will be in touch with you as soon as possible !')
+                # todo send email that i received the data
             return redirect("users:home")
 
 

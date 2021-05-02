@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Profile
+from .models import Profile, InTouch
 
 
 class UserRegisterForm(UserCreationForm):
@@ -29,4 +29,10 @@ class UserProfileForm(forms.Form):
 
 class ContactForm(forms.Form):
     email = forms.EmailField()
-    text = forms.CharField(widget=forms.Textarea)
+    text = forms.CharField(widget=forms.Textarea(attrs={
+        'rows': '3',
+    }))
+
+    class Meta:
+        model = InTouch
+        fields = ('email', 'text')

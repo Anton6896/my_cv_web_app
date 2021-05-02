@@ -44,8 +44,8 @@
                 </p>
 
                 <p>
-                    <h4> new intro</h4>
-                    {{ profile.intro | safe }}
+                <h4> new intro</h4>
+                {{ profile.intro | safe }}
                 </p>
 
             </div>
@@ -80,18 +80,6 @@
                                     <form method="post">
 
                                         {% csrf_token %}
-
-{#                                        <div class="form-group">#}
-{#                                            <label for="exampleFormControlInput1">Email address</label>#}
-{#                                            <input type="email" class="form-control" id="emailForm" name="emailForm"#}
-{#                                                   placeholder="name@example.com">#}
-{#                                        </div>#}
-{##}
-{#                                        <div class="form-group">#}
-{#                                            <label for="exampleFormControlTextarea1">Example textarea</label>#}
-{#                                            <textarea class="form-control" id="TextForm" name="TextForm"#}
-{#                                                      rows="3"></textarea>#}
-{#                                        </div>#}
                                         {{ form | crispy }}
 
                                         <div class="modal-footer">
