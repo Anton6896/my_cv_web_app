@@ -1,10 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import View
 from .models import Profile
-from django.conf import settings
-from django.contrib.auth.forms import UserCreationForm
-
-User = settings.AUTH_USER_MODEL
+from .forms import UserRegisterForm, UserProfileForm
+from django.contrib import messages
 
 
 class HomeUsers(View):
@@ -26,22 +24,25 @@ class HomeUsers(View):
         pass
 
 
-class Register(View):
-    # user creation form (django build in)
+def register(request):
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Welcome {username}')
+            return redirect("users:home")
+    else:
+        form = UserRegisterForm()
 
-    def __init__(self):
-        super(Register, self).__init__()
-        self.form = None
+    return render(request, 'register_users.html', {
+        "title": "register2",
+        'form': form
+    })
 
-    def get(self, *args, **kwarg):
-        form = UserCreationForm()
 
-        context = {
-            "title": 'Register',
-            "form": self.form,
-        }
-
-        return render(self.request, "register_users.html", context)
-
-    def post(self, *args, **kwarg):
-        pass
+# todo edit profile data for cv
+# https://www.youtube.com/watch?v=mF5jzSXb1dc
+# you need the beautifully implementation on the page view
+def profile():
+    pass

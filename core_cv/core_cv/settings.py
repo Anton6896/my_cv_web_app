@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',
+    'crispy_forms',
+    'ckeditor'
 
 ]
 
@@ -131,3 +133,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_ROOT = os.path.join(
     os.path.dirname(BASE_DIR), "media_cdn"
 )
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# on log in redirect
+LOGIN_REDIRECT_URL = 'users:home'
+LOGOUT_REDIRECT_URL = 'users:home'
+
+CKEDITOR_BASEPATH = os.path.join(STATIC_ROOT, '/ckeditor/ckeditor/')

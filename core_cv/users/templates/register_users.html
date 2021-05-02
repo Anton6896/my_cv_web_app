@@ -1,16 +1,27 @@
 {% extends "base.html" %}
 {% load static %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 
     <div class="container">
         <div class="row">
+
             <div class="col">
-                1 of 2
+                <form action="" method="post" class="bootstrap4">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    <hr>
+                    <button id="submit" type="submit" class="btn btn-success">submit</button>
+                </form>
+
             </div>
+
             <div class="col">
-                2 of 2
+
             </div>
+
         </div>
     </div>
 
