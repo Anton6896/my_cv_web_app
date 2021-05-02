@@ -5,6 +5,7 @@ import os
 from uuid import uuid4
 from django.conf import settings
 from django.db.models.signals import post_save
+from ckeditor.fields import RichTextField
 
 User = settings.AUTH_USER_MODEL
 
@@ -25,7 +26,8 @@ class Profile(models.Model):
 
     # todo create data that will be taken from user for his portfolio
 
-    intro = models.TextField(null=True, blank=True)
+    # intro = models.TextField(null=True, blank=True)
+    intro = RichTextField(null=True, blank=True)
     experience = models.TextField(null=True, blank=True)
     education = models.TextField(null=True, blank=True)
     skills = models.TextField(null=True, blank=True)
@@ -56,3 +58,7 @@ def user_created_receiver(sender, instance, created, *args, **kwargs):
 
 
 post_save.connect(user_created_receiver, sender=User)
+
+class InTouch(models.Model):
+    pass
+

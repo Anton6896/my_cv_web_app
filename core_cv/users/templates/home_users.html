@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 
@@ -41,6 +43,11 @@
                     {{ profile.skills }}
                 </p>
 
+                <p>
+                    <h4> new intro</h4>
+                    {{ profile.intro | safe }}
+                </p>
+
             </div>
         </div>
     </div>
@@ -70,21 +77,22 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-sm">
-                                    <form>
+                                    <form method="post">
 
                                         {% csrf_token %}
 
-                                        <div class="form-group">
-                                            <label for="exampleFormControlInput1">Email address</label>
-                                            <input type="email" class="form-control" id="exampleFormControlInput1"
-                                                   placeholder="name@example.com">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="exampleFormControlTextarea1">Example textarea</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                      rows="3"></textarea>
-                                        </div>
+{#                                        <div class="form-group">#}
+{#                                            <label for="exampleFormControlInput1">Email address</label>#}
+{#                                            <input type="email" class="form-control" id="emailForm" name="emailForm"#}
+{#                                                   placeholder="name@example.com">#}
+{#                                        </div>#}
+{##}
+{#                                        <div class="form-group">#}
+{#                                            <label for="exampleFormControlTextarea1">Example textarea</label>#}
+{#                                            <textarea class="form-control" id="TextForm" name="TextForm"#}
+{#                                                      rows="3"></textarea>#}
+{#                                        </div>#}
+                                        {{ form | crispy }}
 
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close

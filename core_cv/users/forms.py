@@ -25,3 +25,8 @@ class UserProfileForm(forms.Form):
             'personal_quality',
             'languages',
         )
+
+
+class ContactForm(forms.Form):
+    email = forms.EmailField()
+    text = forms.CharField(widget=forms.Textarea)

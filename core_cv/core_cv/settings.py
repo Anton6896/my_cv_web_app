@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',
     'crispy_forms',
-    'ckeditor'
+    'ckeditor',
 
 ]
 
@@ -140,4 +140,3 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'users:home'
 LOGOUT_REDIRECT_URL = 'users:home'
 
-CKEDITOR_BASEPATH = os.path.join(STATIC_ROOT, '/ckeditor/ckeditor/')

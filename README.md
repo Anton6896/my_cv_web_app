@@ -13,5 +13,9 @@ epic::
 5. upload to Linode servers
 
 
-using bootstrap 4 as front
+using : 
+bootstrap 4 as front -- 
 https://getbootstrap.com/docs/4.0/components/popovers/
+
+ckeditor for reach text editing --
+https://www.youtube.com/watch?v=mF5jzSXb1dc
