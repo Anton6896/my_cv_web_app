@@ -1,4 +1,6 @@
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render, redirect
+from django.views import generic
 from django.views.generic import View
 from .models import Profile, InTouch
 from .forms import UserRegisterForm, UserProfileForm, ContactForm
@@ -56,7 +58,33 @@ def register(request):
 
 
 # todo edit profile data for cv
-# https://www.youtube.com/watch?v=mF5jzSXb1dc
-# you need the beautifully implementation on the page view
-def profile():
-    pass
+def profile_update(request):
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST)
+        if form.is_valid():
+            pass
+
+
+class ProfileUserUpdate(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
+    model = Profile
+    fields = (
+        'image',
+        'intro',
+        'experience',
+        'education',
+        'skills',
+        'personal_quality',
+        'languages',
+    )
+    template_name = 'profile_users.html'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        messages.success(
+            self.request, f'Profile Updated for {self.request.user.username}')
+        return super().form_valid(form)
+
+    def test_func(self):
+        # check if the user is author of this post
+        pr = self.get_object()
+        return self.request.user == pr.user

@@ -6,6 +6,7 @@ from uuid import uuid4
 from django.conf import settings
 from django.db.models.signals import post_save
 from ckeditor.fields import RichTextField
+from django.urls import reverse
 
 User = settings.AUTH_USER_MODEL
 
@@ -51,6 +52,9 @@ class Profile(models.Model):
 
     def __str__(self):
         return f"profile of {self.user.username}"
+
+    def get_absolute_url(self):
+        return reverse('users:profile', kwargs={"pk": self.pk})
 
 
 # trigger create user profile on user creation

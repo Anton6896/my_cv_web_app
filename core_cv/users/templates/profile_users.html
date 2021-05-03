@@ -9,8 +9,9 @@
         <div class="row">
 
             <div class="col">
-                <form action="" method="post" class="bootstrap4">
+                <form action="" method="post" class="bootstrap4" enctype="multipart/form-data">
                     {% csrf_token %}
+                    {{ form.media }}
                     {{ form | crispy }}
                     <hr>
                     <button id="submit" type="submit" class="btn btn-success">submit</button>

@@ -36,3 +36,5 @@ class ContactForm(forms.Form):
     class Meta:
         model = InTouch
         fields = ('email', 'text')
+
+
