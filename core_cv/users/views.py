@@ -88,3 +88,8 @@ class ProfileUserUpdate(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateV
         # check if the user is author of this post
         pr = self.get_object()
         return self.request.user == pr.user
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'profile'
+        return context

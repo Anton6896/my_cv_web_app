@@ -6,51 +6,63 @@
 {% block content %}
 
     {# user data section #}
-    <div class="container mt-5 mb-5">
+    <div class="container mb-5">
         <div class="row">
-            <div class="col-sm">
+            <div class="col-8">
+                <div class="jumbotron">
+                    <div class="container">
+                        <h4><b>{{ profile.user.username }}</b></h4>
+                        <div class="row">
+                            <div class="col-4">
+                                <img src="{{ profile.image.url }}" alt="..." class="rounded-circle"
+                                     style="width: 75%">
+                            </div>
 
-                <h3>Lorem ipsum</h3>
-                <p>dolor sit amet, consectetur adipisicing elit. Animi earum numquam reprehenderit. A
-                    animi
-                    aperiam, deleniti ea illo illum necessitatibus odio officiis omnis porro praesentium quae sed sint
-                    temporibus totam!
-                </p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem expedita explicabo odio pariatur
-                    possimus rem repellat, similique sint. Dolorem doloribus dolorum exercitationem id ipsam mollitia
-                    nemo, neque provident vel veritatis.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem expedita explicabo odio pariatur
-                    possimus rem repellat, similique sint. Dolorem doloribus dolorum exercitationem id ipsam mollitia
-                    nemo, neque provident vel veritatis.</p>
+                            <div class="col-8">
+                                <p>
+                                    {{ profile.user.email }}
+                                </p>
+                                <p>
+                                    {{ profile.intro | safe }}
+                                </p>
+                            </div>
+                        </div>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem expedita explicabo odio pariatur
-                    possimus rem repellat, similique sint. Dolorem doloribus dolorum exercitationem id ipsam mollitia
-                    nemo, neque provident vel veritatis.</p>
+                    </div>
+                </div>
 
+                <div class="jumbotron">
+                    <div class="container">
+                        <h4><b>Experience</b></h4>
+                    </div>
+                </div>
+
+                <div class="jumbotron">
+                    <div class="container">
+                        <h4><b>Education and Courses</b></h4>
+                    </div>
+                </div>
             </div>
-            <div class="col-sm">
 
-                <h4>Lorem ipsum </h4>
-                <p>
-                    dolor sit amet, consectetur adipisicing elit. Dolorem expedita explicabo odio
-                    pariatur
-                    possimus rem repellat, similique sint. Dolorem doloribus dolorum exercitationem id ipsam mollitia
-                    nemo, neque provident vel veritatis.
-                </p>
+            <div class="col-4">
+                <div class="jumbotron">
+                    <h4><b>My Skills</b></h4>
+                    <p>
+                        {{ profile.skills }}
+                    </p>
+                </div>
 
-                <h5> skills </h5>
-                <p>
-                    {{ profile.skills }}
-                </p>
-
-                <p>
-                <h4> new intro</h4>
-                {{ profile.intro | safe }}
-                </p>
-
+                <div class="jumbotron">
+                    <h4><b>Personal</b></h4>
+                    <p>
+                        {{ profile.skills }}
+                    </p>
+                </div>
             </div>
         </div>
     </div>
+
+    <hr>
     {# end  user data section #}
 
 
