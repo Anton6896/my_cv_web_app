@@ -16,6 +16,8 @@ class HomeUsers(View):
     def get(self, *args, **kwarg):
         self.profile = Profile.objects.get(user_id=1)
 
+        # todo get skills and qualities by bullet (push it as list)
+
         context = {
             "title": 'CV Page',
             "profile": self.profile,
@@ -57,17 +59,10 @@ def register(request):
     })
 
 
-# todo edit profile data for cv
-def profile_update(request):
-    if request.method == 'POST':
-        form = UserProfileForm(request.POST)
-        if form.is_valid():
-            pass
-
-
 class ProfileUserUpdate(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
-    model = Profile
     fields = (
+        'show_name',
+        'phone',
         'image',
         'intro',
         'experience',
@@ -75,7 +70,9 @@ class ProfileUserUpdate(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateV
         'skills',
         'personal_quality',
         'languages',
+
     )
+    model = Profile
     template_name = 'profile_users.html'
 
     def form_valid(self, form):

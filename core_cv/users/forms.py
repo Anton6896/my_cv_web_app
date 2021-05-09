@@ -14,17 +14,15 @@ class UserRegisterForm(UserCreationForm):
 
 
 class UserProfileForm(forms.Form):
+    personal_quality = forms.CharField(widget=forms.Textarea(attrs={
+        'rows': '3',
+        'placeholder': 'quality_1 , quality_2 , etc.',
+        'label': "this is the label"
+    }))
+
     class Meta:
         model = Profile
-        fields = (
-            'image',
-            'intro',
-            'experience',
-            'education',
-            'skills',
-            'personal_quality',
-            'languages',
-        )
+        exclude = ('user', )
 
 
 class ContactForm(forms.Form):
@@ -36,5 +34,3 @@ class ContactForm(forms.Form):
     class Meta:
         model = InTouch
         fields = ('email', 'text')
-
-

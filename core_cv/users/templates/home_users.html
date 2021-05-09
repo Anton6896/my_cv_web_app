@@ -11,7 +11,7 @@
             <div class="col-8">
                 <div class="jumbotron">
                     <div class="container">
-                        <h4><b>{{ profile.user.username }}</b></h4>
+                        <h4><b>{{ profile.show_name }}</b></h4>
                         <div class="row">
                             <div class="col-4">
                                 <img src="{{ profile.image.url }}" alt="..." class="rounded-circle"
@@ -20,7 +20,8 @@
 
                             <div class="col-8">
                                 <p>
-                                    {{ profile.user.email }}
+                                    {{ profile.user.email }}<br>
+                                    {{ profile.phone }}
                                 </p>
                                 <p>
                                     {{ profile.intro | safe }}
@@ -48,14 +49,14 @@
                 <div class="jumbotron">
                     <h4><b>My Skills</b></h4>
                     <p>
-                        {{ profile.skills }}
+                        {{ profile.skills | safe }}
                     </p>
                 </div>
 
                 <div class="jumbotron">
                     <h4><b>Personal</b></h4>
                     <p>
-                        {{ profile.skills }}
+                        {{ profile.personal_quality | safe }}
                     </p>
                 </div>
             </div>

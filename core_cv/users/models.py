@@ -28,10 +28,13 @@ class Profile(models.Model):
     # todo create data that will be taken from user for his portfolio
 
     # intro = models.TextField(null=True, blank=True)
+    show_name = models.CharField(null=True, blank=True, max_length=50)
+    phone = models.CharField(null=True, blank=True, max_length=50)
+
     intro = RichTextField(null=True, blank=True)
-    experience = models.TextField(null=True, blank=True)
-    education = models.TextField(null=True, blank=True)
-    skills = models.TextField(null=True, blank=True)
+    experience = RichTextField(null=True, blank=True)
+    education = RichTextField(null=True, blank=True)
+    skills = RichTextField(null=True, blank=True)
     personal_quality = models.TextField(null=True, blank=True)
     languages = models.TextField(null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
