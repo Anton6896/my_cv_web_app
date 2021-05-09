@@ -1,0 +1,9 @@
+body {
+    background-color: rgba(241, 241, 241, 0.74);
+}
+
+
+.img-responsive {
+    max-width: 50%; /* or to whatever you want here */
+    max-height: 50%; /* or to whatever you want here */
+}
