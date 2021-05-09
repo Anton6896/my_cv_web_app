@@ -6,6 +6,10 @@ from .models import Profile, InTouch
 from .forms import UserRegisterForm, UserProfileForm, ContactForm
 from django.contrib import messages
 
+"""
+front page  
+"""
+
 
 class HomeUsers(View):
     def __init__(self):
@@ -57,6 +61,13 @@ def register(request):
         "title": "register2",
         'form': form
     })
+
+
+"""
+any user can update his profile 
+allow only for user to update his profile 
+user must be logged in to see this page at all 
+"""
 
 
 class ProfileUserUpdate(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
