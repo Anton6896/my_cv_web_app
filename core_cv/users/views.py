@@ -101,3 +101,5 @@ class ProfileUserUpdate(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateV
         context = super().get_context_data(**kwargs)
         context['title'] = 'profile'
         return context
+
+
