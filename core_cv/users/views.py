@@ -18,6 +18,7 @@ class HomeUsers(View):
         self.form = ContactForm()
 
     def get(self, *args, **kwarg):
+        # todo grub user from search
         self.profile = Profile.objects.get(user_id=1)
 
         # todo get skills and qualities by bullet (push it as list)
@@ -30,6 +31,14 @@ class HomeUsers(View):
         }
 
         return render(self.request, "home_users.html", context)
+
+    """
+    # handling message sending at main page 
+    # get data from user
+    # save to db
+    # send email to user and for self 
+    all logic will be in utils file
+    """
 
     def post(self, request, *args, **kwarg):
         self.form = ContactForm(request.POST)
@@ -101,5 +110,3 @@ class ProfileUserUpdate(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateV
         context = super().get_context_data(**kwargs)
         context['title'] = 'profile'
         return context
-
-

@@ -6,46 +6,80 @@
 {% block content %}
 
     {# user data section #}
-    <div class="container mb-5">
+    <div class="container">
         <div class="row">
-            <div class="col-8">
-                <div class="jumbotron">
-                    <div class="container">
-                        <h4><b>{{ profile.show_name }}</b></h4>
-                        <div class="row">
-                            <div class="col-4">
-                                <img src="{{ profile.image.url }}" alt="..." class="rounded-circle"
-                                     style="width: 75%">
-                            </div>
 
-                            <div class="col-8">
-                                <p>
-                                    {{ profile.user.email }}<br>
-                                    {{ profile.phone }}
-                                </p>
-                                <p>
-                                    {{ profile.intro | safe }}
-                                </p>
+            <div class="col">
+                <div class="jumbotron">
+                    <div class="media">
+                        <div class="container">
+                            <div class="row">
+
+                                <figure class="figure">
+                                    <img src="{{ profile.image.url }}" class="figure-img img-fluid rounded"
+                                         alt="A generic square placeholder image with rounded corners in a figure.">
+                                    <figcaption class="figure-caption"></figcaption>
+                                </figure>
+
+                                <div class="col">
+                                </div>
+                                <br>
+                                <div class="col-md-auto">
+                                    <p class="mt-4">
+                                        {{ profile.show_name }}<br>
+                                        {{ profile.user.email }}<br>
+                                        {{ profile.phone }}
+                                    </p>
+                                    <p>
+                                        {{ profile.intro | safe }}
+                                    </p>
+                                </div>
+
                             </div>
                         </div>
-
                     </div>
                 </div>
 
                 <div class="jumbotron">
                     <div class="container">
-                        <h4><b>Experience</b></h4>
+                        <div class="row">
+                            <div class="col col-lg-2">
+                            </div>
+                            <div class="col">
+                            </div>
+
+                            <div class="col-md-auto">
+                                <h4><b>Experience</b></h4>
+                                <p>{{ profile.experience | safe }}</p>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
 
                 <div class="jumbotron">
                     <div class="container">
-                        <h4><b>Education and Courses</b></h4>
+                        <div class="row">
+                            <div class="col col-lg-2">
+                            </div>
+                            <div class="col">
+                            </div>
+
+                            <div class="col-md-auto">
+                                <h4><b>Education</b></h4>
+                                <p>{{ profile.education | safe }}</p>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
+
             </div>
 
-            <div class="col-4">
+            <div class="col-md-auto">
+            </div>
+
+            <div class="col col-lg-4">
                 <div class="jumbotron">
                     <h4><b>My Skills</b></h4>
                     <p>
@@ -54,9 +88,16 @@
                 </div>
 
                 <div class="jumbotron">
-                    <h4><b>Personal</b></h4>
+                    <h4><b>Personal Quality</b></h4>
                     <p>
                         {{ profile.personal_quality | safe }}
+                    </p>
+                </div>
+
+                <div class="jumbotron">
+                    <h4><b>Languages</b></h4>
+                    <p>
+                        {{ profile.languages | safe }}
                     </p>
                 </div>
             </div>
