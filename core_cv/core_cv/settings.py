@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import json
+with open('/etc/config_django_secrets.json') as conf_file:
+    conf = json.load(conf_file)
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,14 +24,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure--v+^n6=z4u)v-v9leu+7%w!-aho0cw_i^%f5z@wql2o-k9s0-$'
+SECRET_KEY = conf['secret_key']
 
-# SECURITY WARNING: don't run with debug turned on in production!
+
+# todo  SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['172.104.145.221', '127.0.0.1']
 
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -125,6 +129,8 @@ STATICFILES_DIRS = [
     # '/var/www/static/',
 ]
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
+#  /home/ant/web_app/my_cv_web_app/static_cdn
+#  /home/ant/web_app/my_cv_web_app/core_cv/static
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -140,3 +146,4 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'users:home'
 LOGOUT_REDIRECT_URL = 'users:home'
 
+# todo get email credentials from conf

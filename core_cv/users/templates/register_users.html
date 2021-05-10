@@ -5,10 +5,9 @@
 
 {% block content %}
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-
-            <div class="col">
+            <div class="col-sm">
                 <form action="" method="post" class="bootstrap4">
                     {% csrf_token %}
                     {{ form | crispy }}
@@ -18,11 +17,12 @@
 
             </div>
 
-            <div class="col">
+            <div class="col-sm">
 
             </div>
 
         </div>
     </div>
+
 
 {% endblock content %}
