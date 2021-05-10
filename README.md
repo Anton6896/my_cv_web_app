@@ -14,9 +14,12 @@ portfolio web app
 
 
 # using 
+* [Deployment checklist](https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/)
 * [bootstrap](https://getbootstrap.com/docs/4.0/components/popovers/) 4 as front
 * [ckeditor](https://www.youtube.com/watch?v=mF5jzSXb1dc) for reach text editing
 * [ufw](https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands) as firewall
 * [Apache as server side](https://ubuntu.com/tutorials/install-and-configure-apache#1-overview) ,
   for swgi use : [libapache2-mod-wsgi-py3](https://stackoverflow.com/questions/19344252/how-to-install-configure-mod-wsgi-for-py3)
 , after config the apache conf.files don't forget to grand appropriate permissions to the media and db activities 
+  
+* [my domain namecheap](https://www.namecheap.com)  antLive.me  [corey create domain](https://www.youtube.com/watch?v=D2lwk1Ukgz0&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=14)
