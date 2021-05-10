@@ -31,6 +31,13 @@ class HomeUsers(View):
 
         return render(self.request, "home_users.html", context)
 
+    """
+    # handling message sending at main page 
+    # get data from user
+    # save to db
+    # send email to user and for self 
+    all logic will be in utils file
+    """
     def post(self, request, *args, **kwarg):
         self.form = ContactForm(request.POST)
         if self.form.is_valid():
