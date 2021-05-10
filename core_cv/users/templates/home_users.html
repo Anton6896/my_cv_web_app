@@ -14,9 +14,12 @@
                     <div class="media">
                         <div class="container">
                             <div class="row">
-                                <div class="col col-sm">
-                                    <img class="mr-3" src="{{ profile.image.url }}" alt="img">
-                                </div>
+
+                                <figure class="figure">
+                                    <img src="{{ profile.image.url }}" class="figure-img img-fluid rounded"
+                                         alt="A generic square placeholder image with rounded corners in a figure.">
+                                    <figcaption class="figure-caption"></figcaption>
+                                </figure>
 
                                 <div class="col">
                                 </div>
@@ -63,13 +66,8 @@
                             </div>
 
                             <div class="col-md-auto">
-                                <h4><b>Experience</b></h4>
-                                <p>um has been the industry's standard dummy text ever since the 1500s, when an unknown
-                                    printer took a galley of type and scrambled it to make a type specimen book. It has
-                                    survived not only five centuries, but also the leap into electronic typesetting,
-                                    remaining essentially unchanged. It was popularised in the 1960s with the release of
-                                    Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-                                    publishing software like Aldus PageMaker including versions</p>
+                                <h4><b>Education</b></h4>
+                                <p>{{ profile.education | safe }}</p>
                             </div>
 
                         </div>
@@ -90,16 +88,16 @@
                 </div>
 
                 <div class="jumbotron">
-                    <h4><b>My Skills</b></h4>
+                    <h4><b>Personal Quality</b></h4>
                     <p>
-                        {{ profile.skills | safe }}
+                        {{ profile.personal_quality | safe }}
                     </p>
                 </div>
 
                 <div class="jumbotron">
-                    <h4><b>My Skills</b></h4>
+                    <h4><b>Languages</b></h4>
                     <p>
-                        {{ profile.skills | safe }}
+                        {{ profile.languages | safe }}
                     </p>
                 </div>
             </div>
