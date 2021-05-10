@@ -36,11 +36,9 @@
             <li class="nav-item active">
                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
-        </ul>
-    </div>
 
-    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-        <ul class="navbar-nav ml-auto">
+
+
             {% if user.is_superuser %}
                 <li class="nav-item">
                     <a class="nav-link " style="color: red" href="{% url 'admin:index' %}" tabindex="-1"
@@ -63,10 +61,9 @@
                     <a class="nav-link" href="{% url 'users:register' %}">Register</a>
                 </li>
             {% endif %}
-
-
         </ul>
     </div>
+
 </nav>
 {# endnavbar #}
 
