@@ -6,6 +6,8 @@ from .models import Profile, InTouch
 from .forms import UserRegisterForm, UserProfileForm, ContactForm
 from django.contrib import messages
 
+from .utils import check_name
+
 """
 front page  
 """
@@ -18,10 +20,14 @@ class HomeUsers(View):
         self.form = ContactForm()
 
     def get(self, *args, **kwarg):
-        # todo grub user from search
-        self.profile = Profile.objects.get(user_id=1)
 
-        # todo get skills and qualities by bullet (push it as list)
+        uname = check_name(self.kwargs.get('uname'), self.request)
+        q = check_name(self.request.GET.get('q'), self.request)
+
+        if uname:
+            self.profile = Profile.objects.get(user__username=uname)
+        else:
+            self.profile = Profile.objects.get(user__username='admin')
 
         context = {
             "title": 'CV Page',
