@@ -6,6 +6,7 @@ app_name = 'users'
 
 urlpatterns = [
     path('', HomeUsers.as_view(), name='home'),
+    path('<str:uname>', HomeUsers.as_view(), name='user_home'),
     path('register/', register, name='register'),
     path('profile/<int:pk>', ProfileUserUpdate.as_view(), name='profile'),
     path('login/', auth_views.LoginView.as_view(template_name='login_users.html'), name='login'),
