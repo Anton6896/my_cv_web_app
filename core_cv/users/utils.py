@@ -2,7 +2,7 @@ from django.contrib import messages
 from .models import Profile
 
 
-def check_name(name: str, request):
+def check_name(name: str, request) -> str or None:
     # check if select word in (sql injection)
 
     if name and name != '?q=' and 'select' in name.lower().split() \
@@ -17,3 +17,7 @@ def check_name(name: str, request):
             else:
                 messages.info(request, f"cant find this name {name} ?")
                 return None
+
+
+def mail_send(mail: str, text: str):
+    pass

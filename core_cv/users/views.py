@@ -6,7 +6,7 @@ from .models import Profile, InTouch
 from .forms import UserRegisterForm, UserProfileForm, ContactForm
 from django.contrib import messages
 
-from .utils import check_name
+from .utils import check_name, mail_send
 
 """
 front page  
@@ -67,7 +67,8 @@ class HomeUsers(View):
             )
             if created:
                 messages.success(request, f'tanks {email}, will be in touch with you as soon as possible !')
-                # todo send email that i received the data
+                # handle mailing for user nad for the person that asking
+                mail_send(email, text)
             return redirect("users:home")
 
 
