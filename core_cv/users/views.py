@@ -24,13 +24,20 @@ class HomeUsers(View):
         # check name will check the strange attempts
         uname = check_name(self.kwargs.get('uname'), self.request)
         q = check_name(self.request.GET.get('q'), self.request)
+        print(f"name : {uname}")
 
+        # check if any search was activated
         if uname:
             self.profile = Profile.objects.get(user__username=uname)
-        if q:
+        elif q:
             self.profile = Profile.objects.get(user__username=q)
+
+        # if user return his profile else return admin cv
         else:
-            self.profile = Profile.objects.get(user__username='admin')
+            if self.request.user.is_authenticated:
+                self.profile = Profile.objects.get(user__username=self.request.user.username)
+            else:
+                self.profile = Profile.objects.get(user__username='admin')
 
         context = {
             "title": 'CV Page',

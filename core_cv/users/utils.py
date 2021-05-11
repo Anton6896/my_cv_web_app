@@ -1,4 +1,5 @@
 from django.contrib import messages
+from .models import Profile
 
 
 def check_name(name: str, request):
@@ -10,4 +11,9 @@ def check_name(name: str, request):
         #  send mail to admin
         return None
     else:
-        return name
+        if name:
+            if Profile.objects.filter(user__username=name).exists():
+                return name
+            else:
+                messages.info(request, f"cant find this name {name} ?")
+                return None
