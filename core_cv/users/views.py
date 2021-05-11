@@ -21,11 +21,14 @@ class HomeUsers(View):
 
     def get(self, *args, **kwarg):
 
+        # check name will check the strange attempts
         uname = check_name(self.kwargs.get('uname'), self.request)
         q = check_name(self.request.GET.get('q'), self.request)
 
         if uname:
             self.profile = Profile.objects.get(user__username=uname)
+        if q:
+            self.profile = Profile.objects.get(user__username=q)
         else:
             self.profile = Profile.objects.get(user__username='admin')
 
