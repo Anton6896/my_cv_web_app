@@ -5,6 +5,7 @@ from django.views.generic import View
 from .models import Profile, InTouch
 from .forms import UserRegisterForm, UserProfileForm, ContactForm
 from django.contrib import messages
+from django.contrib.auth.models import User
 
 from .utils import check_name, mail_send
 
@@ -18,21 +19,35 @@ class HomeUsers(View):
         super().__init__()
         self.profile = None
         self.form = ContactForm()
+        self.uname = None
+        self.q = None
 
     def get(self, *args, **kwarg):
 
-        # check name will check the strange attempts
-        uname = check_name(self.kwargs.get('uname'), self.request)
-        q = check_name(self.request.GET.get('q'), self.request)
-        print(f"name : {uname}")
+        """
+        check_name will check the strange attempts validation
+        """
+        self.uname = check_name(self.kwargs.get('uname'), self.request)
+        self.q = check_name(self.request.GET.get('q'), self.request)
 
-        # check if any search was activated
-        if uname:
-            self.profile = Profile.objects.get(user__username=uname)
-        elif q:
-            self.profile = Profile.objects.get(user__username=q)
+        """
+         transfer uname and q thru hte session
+        """
+        self.request.session['uname'] = self.uname
+        self.request.session['q'] = self.q
 
-        # if user return his profile else return admin cv
+        """
+        search switch
+        """
+        if self.uname:
+            self.profile = Profile.objects.get(user__username=self.uname)
+        elif self.q:
+            self.profile = Profile.objects.get(user__username=self.q)
+
+            """ 
+            main page will be the main user page (admin) 
+            oll others will be www.domain/username 
+            """
         else:
             if self.request.user.is_authenticated:
                 self.profile = Profile.objects.get(user__username=self.request.user.username)
@@ -68,7 +83,7 @@ class HomeUsers(View):
             if created:
                 messages.success(request, f'tanks {email}, will be in touch with you as soon as possible !')
                 # handle mailing for user nad for the person that asking
-                mail_send(email, text)
+                mail_send(email, text, request)
             return redirect("users:home")
 
 
