@@ -29,7 +29,7 @@ SECRET_KEY = conf['secret_key']
 # todo  SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['172.104.145.221', '127.0.0.1']
+ALLOWED_HOSTS = ['172.104.145.221', '127.0.0.1', 'www.antlive.me']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -142,4 +142,11 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'users:home'
 LOGOUT_REDIRECT_URL = 'users:home'
 
-# todo get email credentials from conf
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = conf['email']
+EMAIL_HOST_PASSWORD = conf['email_password']
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_USE_SSL = False
