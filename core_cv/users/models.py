@@ -37,6 +37,8 @@ class Profile(models.Model):
     skills = RichTextField(null=True, blank=True)
     personal_quality = RichTextField(null=True, blank=True)
     languages = RichTextField(null=True, blank=True)
+    about = RichTextField(null=True, blank=True)
+
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
