@@ -50,7 +50,8 @@ class HomeUsers(View):
             if self.request.user.is_authenticated:
                 self.profile = Profile.objects.get(user__username=self.request.user.username)
             else:
-                self.profile = Profile.objects.get(user__username='admin')
+                # hard coded admin
+                self.profile = Profile.objects.get(user__username='antAdmin')
 
         context = {
             "title": 'CV Page',
