@@ -16,7 +16,7 @@ def customer_image_file_path(instance, filename):
     ext = filename.split('.')[-1]
     filename = f'{uuid4()}.{ext}'
 
-    return os.path.join('upload/customer_pic/', filename)
+    return os.path.join('customer_pic/', filename)
 
 
 class Profile(models.Model):

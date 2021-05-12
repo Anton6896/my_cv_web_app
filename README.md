@@ -17,7 +17,7 @@ portfolio web app
 * [bootstrap](https://getbootstrap.com/docs/4.0/components/popovers/) 4 as front
 * [ckeditor](https://www.youtube.com/watch?v=mF5jzSXb1dc) for reach text editing
 * [ufw](https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands) as firewall
-* [Apache as server side](https://ubuntu.com/tutorials/install-and-configure-apache#1-overview) , for swgi
+* [Apache as server side](https://ubuntu.com/tutorials/install-and-configure-apache#1-overview) 46.23, for swgi
   use : [libapache2-mod-wsgi-py3](https://stackoverflow.com/questions/19344252/how-to-install-configure-mod-wsgi-for-py3)
   , after config the apache conf.files don't forget to grand appropriate permissions to the media and db activities
 
