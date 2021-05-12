@@ -29,7 +29,7 @@ SECRET_KEY = conf['secret_key']
 # todo  SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['172.104.145.221', '127.0.0.1']
+ALLOWED_HOSTS = ['172.104.145.221', '127.0.0.1', 'www.antlive.me']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
