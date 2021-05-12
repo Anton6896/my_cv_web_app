@@ -5,6 +5,7 @@ from django.views.generic import View
 from .models import Profile, InTouch
 from .forms import UserRegisterForm, UserProfileForm, ContactForm
 from django.contrib import messages
+from .utils import check_name, mail_send
 
 """
 front page  
@@ -16,11 +17,41 @@ class HomeUsers(View):
         super().__init__()
         self.profile = None
         self.form = ContactForm()
+        self.uname = None
+        self.q = None
 
     def get(self, *args, **kwarg):
-        self.profile = Profile.objects.get(user_id=1)
 
-        # todo get skills and qualities by bullet (push it as list)
+        """
+        check_name will check the strange attempts validation
+        """
+        self.uname = check_name(self.kwargs.get('uname'), self.request)
+        self.q = check_name(self.request.GET.get('q'), self.request)
+
+        """
+         transfer uname and q thru hte session
+        """
+        self.request.session['uname'] = self.uname
+        self.request.session['q'] = self.q
+
+        """
+        search switch
+        """
+        if self.uname:
+            self.profile = Profile.objects.get(user__username=self.uname)
+        elif self.q:
+            self.profile = Profile.objects.get(user__username=self.q)
+
+            """ 
+            main page will be the main user page (admin) 
+            oll others will be www.domain/username 
+            """
+        else:
+            if self.request.user.is_authenticated:
+                self.profile = Profile.objects.get(user__username=self.request.user.username)
+            else:
+                # hard coded admin
+                self.profile = Profile.objects.get(user__username='antAdmin')
 
         context = {
             "title": 'CV Page',
@@ -30,6 +61,14 @@ class HomeUsers(View):
         }
 
         return render(self.request, "home_users.html", context)
+
+    """
+    # handling message sending at main page 
+    # get data from user
+    # save to db
+    # send email to user and for self 
+    all logic will be in utils file
+    """
 
     def post(self, request, *args, **kwarg):
         self.form = ContactForm(request.POST)
@@ -42,7 +81,8 @@ class HomeUsers(View):
             )
             if created:
                 messages.success(request, f'tanks {email}, will be in touch with you as soon as possible !')
-                # todo send email that i received the data
+                # handle mailing for user nad for the person that asking
+                mail_send(email, text, request)
             return redirect("users:home")
 
 

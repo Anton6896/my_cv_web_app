@@ -6,46 +6,78 @@
 {% block content %}
 
     {# user data section #}
-    <div class="container mb-5">
+    <div class="container">
         <div class="row">
-            <div class="col-8">
-                <div class="jumbotron">
-                    <div class="container">
-                        <h4><b>{{ profile.show_name }}</b></h4>
-                        <div class="row">
-                            <div class="col-4">
-                                <img src="{{ profile.image.url }}" alt="..." class="rounded-circle"
-                                     style="width: 75%">
-                            </div>
 
-                            <div class="col-8">
-                                <p>
-                                    {{ profile.user.email }}<br>
-                                    {{ profile.phone }}
-                                </p>
-                                <p>
-                                    {{ profile.intro | safe }}
-                                </p>
+            <div class="col">
+                <div class="jumbotron">
+                    <div class="media">
+                        <div class="container">
+                            <div class="row">
+
+                                <figure class="figure">
+                                    <img src="{{ profile.image.url }}" class="figure-img img-fluid rounded"
+                                         alt="A generic square placeholder image with rounded corners in a figure.">
+                                    <figcaption class="figure-caption"></figcaption>
+                                </figure>
+
+                                <br>
+                                <div class="col-md-auto">
+                                    <p class="mt-4">
+                                        {{ profile.show_name }}<br>
+                                        {{ profile.user.email }}<br>
+                                        {{ profile.phone }}
+                                    </p>
+                                    <p>
+                                        {{ profile.intro | safe }}
+                                    </p>
+                                </div>
+
                             </div>
                         </div>
-
                     </div>
                 </div>
 
                 <div class="jumbotron">
                     <div class="container">
-                        <h4><b>Experience</b></h4>
+                        <div class="row">
+                            <div class="col col-lg-2">
+                            </div>
+                            <div class="col">
+                            </div>
+
+                            <div class="col-md-auto">
+                                <h4><b>Experience</b></h4>
+                                <p>{{ profile.experience | safe }}</p>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
 
                 <div class="jumbotron">
                     <div class="container">
-                        <h4><b>Education and Courses</b></h4>
+                        <div class="row">
+                            <div class="col col-lg-2">
+                            </div>
+                            <div class="col">
+                            </div>
+
+                            <div class="col-md-auto">
+                                <h4><b>Education</b></h4>
+                                <p>{{ profile.education | safe }}</p>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
+
             </div>
 
-            <div class="col-4">
+            <div class="col-md-auto">
+            </div>
+
+            <div class="col col-lg-4">
                 <div class="jumbotron">
                     <h4><b>My Skills</b></h4>
                     <p>
@@ -54,9 +86,16 @@
                 </div>
 
                 <div class="jumbotron">
-                    <h4><b>Personal</b></h4>
+                    <h4><b>Personal Quality</b></h4>
                     <p>
                         {{ profile.personal_quality | safe }}
+                    </p>
+                </div>
+
+                <div class="jumbotron">
+                    <h4><b>Languages</b></h4>
+                    <p>
+                        {{ profile.languages | safe }}
                     </p>
                 </div>
             </div>
@@ -66,14 +105,18 @@
     <hr>
     {# end  user data section #}
 
+    {% comment %}
+    some why i cant toch this section othervise its not working , the from end logic if trying to send message
+    outside the main page its wil brake the system
+    {% endcomment %}
 
     {# make contact with me #}
+
     <div>
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-            Make touch with me
-        </button>
-
+        {#        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">#}
+        {#            Make touch with me#}
+        {#        </button>#}
         <!-- Modal -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
              aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -112,5 +155,67 @@
         </div>
     </div>
     {# end  make contact with me #}
+
+
+    <br>
+    {#footer#}
+    <footer>
+        <nav class="navbar fixed-bottom navbar-light bg-light mt-5">
+            <a class="navbar-brand" href="#">Great CV</a>
+
+            <a class="navbar-brand" href="#">
+                {# make contact with me #}
+                <div>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                            data-target="#exampleModalCenter">Send message
+                    </button>
+
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    {# form #}
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm">
+                                                <form method="post">
+
+                                                    {% csrf_token %}
+                                                    {{ form_contact | crispy }}
+
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Close
+                                                        </button>
+                                                        <button type="submit" class="btn btn-primary">Send</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {# end form #}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {# end  make contact with me #}
+            </a>
+
+
+        </nav>
+    </footer>
+    {#endfooter#}
 {% endblock content %}
 
