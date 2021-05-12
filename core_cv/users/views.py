@@ -141,3 +141,12 @@ class ProfileUserUpdate(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateV
         context = super().get_context_data(**kwargs)
         context['title'] = 'profile'
         return context
+
+
+def about_page(request):
+    about = Profile.objects.get(user__username='antAdmin').about
+
+    return render(request, 'about.html', {
+        "title": "GreatCV",
+        "about": about
+    })
