@@ -18,7 +18,7 @@ with open('/etc/config_django_secrets.json') as conf_file:
     conf = json.load(conf_file)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -26,10 +26,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = conf['secret_key']
 
-# todo  SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# separate setting file
+# DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+# ALLOWED_HOSTS = ['172.104.145.221', '127.0.0.1', 'www.antlive.me']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
