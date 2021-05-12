@@ -5,8 +5,6 @@ from django.views.generic import View
 from .models import Profile, InTouch
 from .forms import UserRegisterForm, UserProfileForm, ContactForm
 from django.contrib import messages
-from django.contrib.auth.models import User
-
 from .utils import check_name, mail_send
 
 """
