@@ -23,11 +23,11 @@
 
                                 <br>
                                 <div class="col-md-auto">
-                                    <p class="mt-4">
-                                        {{ profile.show_name }}<br>
-                                        {{ profile.user.email }}<br>
-                                        {{ profile.phone }}
-                                    </p>
+
+                                    <h3><b>{{ profile.show_name }}</b></h3>
+                                    <h5>{{ profile.user.email }}</h5>
+                                    <h5>{{ profile.phone }}</h5>
+
                                     <p>
                                         {{ profile.intro | safe }}
                                     </p>
