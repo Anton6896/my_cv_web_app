@@ -22,5 +22,4 @@ portfolio web app
   , after config the apache conf.files don't forget to grand appropriate permissions to the media and db activities
 
 * [my domain namecheap](https://www.namecheap.com)
-  antLive.me  [corey create domain](https://www.youtube.com/watch?v=D2lwk1Ukgz0&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=14)
 
